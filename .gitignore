@@ -1,0 +1,72 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib60/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+.venv-*/
+venv/
+ENV/
+env/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# Type checkers / linters
+.mypy_cache/
+.dmypy.json
+.ruff_cache/
+.pytype/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+.pypirc
+credentials.json
+secrets.*
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Generated media (test output)
+*.mp4
+*.webm
+*.mkv
+
+# Jupyter
+.ipynb_checkpoints/

@@ -1,0 +1,68 @@
+[build-system]
+requires = ["hatchling>=1.20"]
+build-backend = "hatchling.build"
+
+[project]
+name = "allens-h3"
+version = "1.0.0"
+description = "Python SDK for Allen's MiniMax H3 video generation API"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+authors = [{ name = "Allen Zhou" }]
+keywords = ["video-generation", "minimax", "h3", "ai", "text-to-video"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "httpx>=0.24,<1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.21",
+    "respx>=0.20",
+]
+
+[project.scripts]
+allens-h3 = "allens_h3.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/AICAllenZhou/allens-h3-python"
+Repository = "https://github.com/AICAllenZhou/allens-h3-python"
+Documentation = "https://github.com/AICAllenZhou/allens-h3-python#readme"
+Changelog = "https://github.com/AICAllenZhou/allens-h3-python/blob/main/CHANGELOG.md"
+Issues = "https://github.com/AICAllenZhou/allens-h3-python/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/allens_h3"]
+
+[tool.hatch.build.targets.sdist]
+# Tests are deliberately excluded from the published sdist. They contain
+# deliberately fake credential strings, plus the assertion that proves the
+# SDK never disables TLS verification -- both trip credential scanners for
+# no benefit. The tests live in the repository instead.
+include = ["src/allens_h3", "README.md", "LICENSE", "CHANGELOG.md"]
+# Local virtualenvs live beside this file; without this hatchling sweeps up
+# every dependency's LICENSE from site-packages.
+exclude = [".venv*", "**/site-packages/**", "dist", "*.py[cod]", "__pycache__"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+markers = [
+    "integration: hits the real API and uses GPU time (deselect with '-m \"not integration\"')",
+]
