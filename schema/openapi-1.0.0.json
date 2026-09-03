@@ -3,7 +3,7 @@
   "info": {
     "title": "Allen's MiniMax H3 API",
     "description": "Text-to-video generation on a private RTX 3090 workstation.\n\n**This is a credential-protected private service.** There is no public sign-up and no anonymous access. The host is reachable only through an operator-managed tunnel whose hostname changes between restarts, so clients must configure `ALLENS_H3_BASE_URL` themselves — no endpoint is ever hardcoded in the SDK.\n\n### Authentication\n`Authorization: Bearer <client_id>:<secret>`\n\n### Scopes\n- `read` — inspect GPU telemetry, list and poll your own jobs, download your own finished videos.\n- `generate` — submit and cancel jobs.\n\nA credential carries a comma-separated scope set (commonly `generate,read`). A `read`-only credential receives `403` on any generating route.\n\n### Isolation\nJobs are strictly per-client. A job belonging to another client is indistinguishable from one that does not exist — both return `404`.\n\n### Schema provenance\nThe production server runs with `openapi_url=None`, `docs_url=None` and `redoc_url=None`. This document is generated offline from the live application object and shipped with the SDK; the server itself never exposes it.",
-    "version": "2.0.0",
+    "version": "1.0.0",
     "x-sdk-version": "1.0.0",
     "contact": {
       "name": "Allen Zhou",

@@ -110,5 +110,8 @@ Schema and SDK version together. When the API changes:
 2. re-run live conformance before committing
 3. snapshot as `openapi-<sdk-version>.json` on release
 
-`info.version` is the **API** version (currently `2.0.0`);
-`info.x-sdk-version` is the SDK version the snapshot ships with.
+`info.version` is the **API** version (currently `1.0.0`, serving the `/v1`
+namespace); `info.x-sdk-version` is the SDK version the snapshot ships with.
+
+The two are tracked separately and may diverge in future — an API change does
+not force an SDK release, and vice versa. They happen to agree today.
